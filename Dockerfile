@@ -13,7 +13,7 @@ ENV STREAMLIT_SERVER_PORT=8080
 # these variables might be needed for the right info (logging) to show up in the log
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONIOENCODING=UTF-8
-ENV HF_DATASETS_CACHE=/app
+ENV TRANSFORMERS_CACHE=/app
 
 EXPOSE 8080
 
