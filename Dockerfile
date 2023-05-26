@@ -17,8 +17,10 @@ ENV HF_DATASETS_CACHE=/app
 
 EXPOSE 8080
 
-COPY ./app .
-COPY ./data .
+COPY ./app ./app
+COPY ./data ./data
+
+WORKDIR /app/app
 
 ENTRYPOINT ["streamlit", "run"]
 
