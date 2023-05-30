@@ -24,6 +24,8 @@ COPY ./data ./data
 
 WORKDIR /app/app
 
+RUN python -c "from langchain.embeddings import HuggingFaceEmbeddings; embeddings = HuggingFaceEmbeddings()"
+
 ENTRYPOINT ["streamlit", "run"]
 
 CMD ["frontend_app.py"]
