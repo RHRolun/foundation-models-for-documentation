@@ -72,13 +72,7 @@ def index_documents():
     # https://langchain.readthedocs.io/en/latest/modules/indexes/vectorstore_examples/chroma.html#persist-the-database
     db_dir = "../data/interim"
     docsearch = None
-    if os.path.isdir(os.path.join(db_dir, "index")):
-        # Load the existing vector store
-        docsearch = Chroma(persist_directory=db_dir, embedding_function=embeddings)
-    else:
-        # Create a new vector store
-        docsearch = Chroma.from_documents(texts[:1000], embeddings, persist_directory=db_dir)
-        docsearch.persist()
+    docsearch = Chroma(persist_directory=db_dir, embedding_function=embeddings)
     return docsearch
 
 def create_qa_chain(llm, docsearch: Chroma):
