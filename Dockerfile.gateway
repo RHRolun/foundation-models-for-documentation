@@ -1,0 +1,28 @@
+FROM python:3.10.4
+
+WORKDIR /app
+
+COPY app/gateway_requirements.txt ./gateway_requirements.txt
+
+RUN pip install -r gateway_requirements.txt
+
+RUN pip list > piplist.txt
+
+
+ENV PYTHONIOENCODING=UTF-8
+ENV TRANSFORMERS_CACHE=/app
+ENV HUGGINGFACE_HUB_CACHE=/app
+ENV SENTENCE_TRANSFORMERS_HOME=/app
+
+EXPOSE 8000
+
+COPY ./app ./app
+COPY ./data ./data
+
+WORKDIR /app/app
+
+RUN python loader.py
+
+ENTRYPOINT ["uvicorn"]
+
+CMD ["gateway_app:app"]
