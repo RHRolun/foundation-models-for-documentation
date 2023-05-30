@@ -50,7 +50,7 @@ class ApiLLM(LLM):
     def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
         """Call the LLM."""
         payload = json.dumps([prompt, self.api_params]) 
-        import pdb; pdb.set_trace()
+        print(prompt)
         response = requests.post(self.api_url, json={"data":[payload]}).json()
         return response["data"][0]
     
@@ -90,7 +90,7 @@ def create_qa_chain(llm, docsearch: Chroma):
     return qa_chain
 
 def get_reply(search_text: str, qa_chain) -> str:
-    return "Working"
+    # return "Working"
     return qa_chain(search_text)
 
 def main():
