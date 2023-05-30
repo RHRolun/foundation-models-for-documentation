@@ -24,7 +24,7 @@ COPY ./data ./data
 
 WORKDIR /app/app
 
-RUN python -c loader.py
+RUN python loader.py
 
 ENTRYPOINT ["streamlit", "run"]
 
