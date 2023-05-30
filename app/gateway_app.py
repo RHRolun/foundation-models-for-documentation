@@ -125,3 +125,7 @@ def _ask_model(question: str):
 @app.post("/question")
 def ask_model(message: Message):
     return _ask_model(message.question)
+
+@app.post("/")
+def root():
+    return {"status":"working"}
