@@ -126,6 +126,6 @@ def _ask_model(question: str):
 def ask_model(message: Message):
     return _ask_model(message.question)
 
-@app.post("/")
+@app.get("/")
 def root():
     return {"status":"working"}
