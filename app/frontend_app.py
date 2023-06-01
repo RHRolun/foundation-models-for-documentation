@@ -6,7 +6,7 @@ import os
 GATEWAY_URL = os.environ.get("GATEWAY_URL")+"/question"
 
 def get_reply(search_text: str) -> str:
-    response = requests.post(GATEWAY_URL, json={"message": search_text})
+    response = requests.post(GATEWAY_URL, json={"question": search_text})
     return response.json()
 
 def main():    
